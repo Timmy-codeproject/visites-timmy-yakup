@@ -29,7 +29,7 @@ Les hooks pre-commit sont exécutés localement, sur l'ordinateur du développeu
 Q3. Combien de temps un secret poussé sur une forge publique reste-t-il privé ?
 Un secret public est potentiellement compromis dès sa publication. Il faut le révoquer et le remplacer immédiatement car des robots scannent continuellement les dépôts publiques à la recherche de token.
 
-TP3 : 
+TP3 :
 
 Q1. Combien de temps dure votre pipeline, et qu'est-ce qui prend le plus de temps ?
 
