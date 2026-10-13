@@ -11,6 +11,11 @@ permissions:
 
 jobs:
   test:
+    name: test (py${{ matrix.python }})
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.13"]
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +29,9 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
 
       # 3. Installer les dépendances
       - name: Install dependencies
