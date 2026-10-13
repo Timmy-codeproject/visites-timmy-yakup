@@ -17,6 +17,8 @@ TP2 :
 
 <img width="1378" height="250" alt="image" src="https://github.com/user-attachments/assets/75adfb6c-66cd-47da-a4a8-1f99d5dd44bb" />
 
+On a lancé gitleaks sur tout l'historique : 35 commits scannés, aucun secret trouvé. La commande git log --all --oneline -- app/old_settings.py ne renvoie rien : ce fichier n'a jamais existé dans notre dépôt. Notre dépôt a été créé avec le zip du TP01 et pas à partir du dépôt modèle, donc il n'a pas l'historique où le formateur avait caché le faux jeton, que le formateur avait oublié d'inclure. Il n'y a donc pas de commit fautif à identifier ni de .gitleaksignore à écrire.
+
 Q1. Quelles règles auraient empêché le secret d'arriver sur main ?
 
 Plusieurs protections auraient pu empêcher l'introduction du secret : Pull request obligatoire, REquire revieiew from Owner .... La meilleure protection serait toutefois un gitleaks exécuté dans une pipeline CI/CD poiur éviter les erreurs humaines de relecture 
