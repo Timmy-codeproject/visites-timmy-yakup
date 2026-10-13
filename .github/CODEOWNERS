@@ -1,0 +1,20 @@
+# .github/CODEOWNERS
+# Les derniers motifs correspondants l'emportent.
+
+# Propriétaires par défaut
+*              @timmy-codeproject @yakupovic
+
+# Configuration GitHub
+/.github/      @timmy-codeproject
+
+# Infrastructure
+/infra/        @timmy-codeproject
+
+# Application
+/app/          @yakupovic
+
+# Monitoring
+/monitoring/   @yakupovic
+
+# Documentation
+/docs/         @timmy-codeproject @yakupovic
