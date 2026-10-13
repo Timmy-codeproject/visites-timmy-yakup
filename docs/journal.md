@@ -12,3 +12,6 @@ Q3. Pourquoi signer les commits si la forge vérifie déjà qui pousse ?
 
 La forge vérifie seulement qui a poussé, pas qui a écrit le commit : n'importe qui peut mettre le nom et l'e-mail d'un autre.
 La signature est attachée au commit : elle prouve l'auteur et reste vrai si le dépôt est cloné et poussé par quelqu'un d'autre.
+
+TP2 : 
+<img width="1894" height="1021" alt="image" src="https://github.com/user-attachments/assets/edb55adb-f2fd-40b6-a9d4-b6aad34f6b47" />
