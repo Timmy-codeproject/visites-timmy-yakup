@@ -1,3 +1,35 @@
+
+# ============================================================
+# Hooks pre-commit : contrôles automatiques avant chaque commit
+# ============================================================
+#
+# Ces hooks vérifient la qualité et la cohérence du code.
+# Un commit peut être bloqué si un hook détecte une erreur
+# ou modifie automatiquement un fichier.
+#
+# - ruff :
+#     Analyse le code Python pour détecter les erreurs,
+#     les imports inutilisés et les problèmes de style.
+#
+# - ruff-format :
+#     Formate automatiquement le code Python pour garantir
+#     une présentation homogène dans tout le projet.
+#
+# - end-of-file-fixer :
+#     Vérifie que chaque fichier se termine correctement
+#     par un unique saut de ligne.
+#
+# - trailing-whitespace :
+#     Supprime les espaces inutiles en fin de ligne.
+#
+# Si un hook modifie des fichiers, il faut les ajouter
+# à nouveau avec "git add", puis relancer le commit.
+#
+# Pour exécuter tous les contrôles manuellement :
+#   pre-commit run --all-files
+#
+# ============================================================
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
