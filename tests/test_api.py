@@ -22,6 +22,7 @@ def test_metrics_counts_requests(client):
     assert 'http_requests_total{method="GET",path="/",status="200"}' in body
     assert "http_request_duration_seconds" in body
 
+
 def test_root_version_header(client):
     resp = client.get("/")
     assert resp.status_code == 200
