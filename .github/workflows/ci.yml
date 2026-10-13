@@ -1,0 +1,66 @@
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le dépôt et son historique
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      # 2. Installer Python 3.13
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      # 3. Installer les dépendances
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+
+      # 4. Vérifier la qualité du code Python
+      - name: Check code quality
+        run: |
+          ruff check .
+          ruff format --check .
+
+      # 5. Installer Gitleaks
+      - name: Install Gitleaks
+        run: |
+          GITLEAKS_VERSION=8.24.3
+          curl -fsSL \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            -o gitleaks.tar.gz
+          mkdir -p "$HOME/.local/bin"
+          tar -xzf gitleaks.tar.gz -C "$HOME/.local/bin" gitleaks
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      # 6. Exécuter tous les hooks pre-commit
+      - name: Run pre-commit
+        run: pre-commit run --all-files
+
+      # 7. Exécuter les tests avec couverture
+      - name: Run tests with coverage
+        run: |
+          pytest --cov=app --cov-report=xml --cov-report=html
+
+      # 8. Publier le rapport de couverture HTML
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html
+          path: htmlcov/
+          retention-days: 7
