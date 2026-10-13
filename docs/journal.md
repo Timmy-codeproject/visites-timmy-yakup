@@ -28,3 +28,19 @@ Les hooks pre-commit sont exécutés localement, sur l'ordinateur du développeu
 
 Q3. Combien de temps un secret poussé sur une forge publique reste-t-il privé ?
 Un secret public est potentiellement compromis dès sa publication. Il faut le révoquer et le remplacer immédiatement car des robots scannent continuellement les dépôts publiques à la recherche de token.
+
+TP3 : 
+
+Q1. Combien de temps dure votre pipeline, et qu'est-ce qui prend le plus de temps ?
+
+Le pipeline dure entre 20 et 35 secondes. Avant le cache c'était 28 secondes. Avec le cache, la première exécution a pris 30 s et 28 s, la deuxième 25 s et 19 s. Le gain est petit, parce qu'on a peu de dépendances. Ce qui prend le plus de temps, c'est pre-commit (environ 25 s), les tests ne prennent que 3 s.
+
+Q2. Qu'est-ce qui empêche un membre de contourner le pipeline ?
+
+Le ruleset : les deux checks test (py3.12) et test (py3.13) sont obligatoires et la pull request doit être approuvée. On n'est pas administrateurs donc on ne peut pas les enlever. Sans ruleset, le pipeline ne serait qu'un avis.
+
+Q3. Quelles lignes de ci.yml changeriez-vous pour GitLab CI ou Gitea Actions ?
+
+Pour Gitea, presque rien : le dossier devient .gitea/workflows. Pour GitLab, il faudrait réécrire tout le fichier en .gitlab-ci.yml, mais les concepts restent les mêmes.
+
+Avec act, tout passe en local sauf upload-artifact : il n'y a pas de jeton ni de service d'artefacts GitHub sur notre machine. act sert à tester vite avant de pousser, mais il ne remplace pas GitHub Actions.
