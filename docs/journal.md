@@ -15,4 +15,4 @@ La signature est attachée au commit : elle prouve l'auteur et reste vrai si le 
 
 TP2 : 
 
-<img width="1894" height="1021" alt="image" src="https://github.com/user-attachments/assets/a92c961e-6d2c-4607-b63d-bbd8b0820c10" />
+<img width="1378" height="250" alt="image" src="https://github.com/user-attachments/assets/75adfb6c-66cd-47da-a4a8-1f99d5dd44bb" />
