@@ -1,3 +1,4 @@
+# Mises à jour automatiques des dépendances (pip, GitHub Actions, Docker), chaque semaine.
 version: 2
 updates:
   - package-ecosystem: pip
