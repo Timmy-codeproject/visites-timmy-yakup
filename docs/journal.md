@@ -13,16 +13,16 @@ Q3. Pourquoi signer les commits si la forge vérifie déjà qui pousse ?
 La forge vérifie seulement qui a poussé, pas qui a écrit le commit : n'importe qui peut mettre le nom et l'e-mail d'un autre.
 La signature est attachée au commit : elle prouve l'auteur et reste vrai si le dépôt est cloné et poussé par quelqu'un d'autre.
 
-TP2 : 
+TP2 :
 
 <img width="1378" height="250" alt="image" src="https://github.com/user-attachments/assets/75adfb6c-66cd-47da-a4a8-1f99d5dd44bb" />
 
 Q1. Quelles règles auraient empêché le secret d'arriver sur main ?
 
-Plusieurs protections auraient pu empêcher l'introduction du secret : Pull request obligatoire, REquire revieiew from Owner .... La meilleure protection serait toutefois un gitleaks exécuté dans une pipeline CI/CD poiur éviter les erreurs humaines de relecture 
+Plusieurs protections auraient pu empêcher l'introduction du secret : Pull request obligatoire, REquire revieiew from Owner .... La meilleure protection serait toutefois un gitleaks exécuté dans une pipeline CI/CD poiur éviter les erreurs humaines de relecture
 
 Q2. Gitleaks en pre-commit protège-t-il un collègue qui n'a pas installé pre-commit ?
 Les hooks pre-commit sont exécutés localement, sur l'ordinateur du développeur. Un collègue qui n'a pas installé les hooks peut donc créer un commit et pousser son code sans exécuter Gitleaks.
 
 Q3. Combien de temps un secret poussé sur une forge publique reste-t-il privé ?
-Un secret public est potentiellement compromis dès sa publication. Il faut le révoquer et le remplacer immédiatement car des robots scannent continuellement les dépôts publiques à la recherche de token. 
+Un secret public est potentiellement compromis dès sa publication. Il faut le révoquer et le remplacer immédiatement car des robots scannent continuellement les dépôts publiques à la recherche de token.
